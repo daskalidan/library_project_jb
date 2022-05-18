@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}customers{% endblock %}
+{% block head %}{{ super() }}{% endblock %}
+{% block content %}
+'''
+add new customer form
+search line by customer name
+table of customers with three options- all/active/ punished 
+on each line button 'remove' only if allowed
+'''
+<form action="/customers/spesific" method="POST">
+    search customer name: <input name="look_name">
+    <input type="submit">
+</form>
+<table>
+    <tr>
+        <th>actions</th>
+        <th>id_number</th>
+        <th>name</th>
+        <th>city_address</th>
+        <th>age</th>
+        <th>customer_status</th>
+    </tr>
+    {% for customer in data %}
+    <tr>
+        <td> <a href="/choose/">choose</a>
+            <a href="/customers/remove/{{customer['id_number']}}">Remove</a>
+        </td>
+        <td>{{customer['id_number']}}</td>
+        <td>{{customer['name']}}</td>
+        <td>{{customer['city_address']}}</td>
+        <td>{{customer['age']}}</td>
+        <td>{{customer['customer_status']}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<div>
+    <form action="/customers/add" method="POST">
+        id number: <input name="id_number">
+        name: <input name="name">
+        city address: <input name="city_address">
+        age: <input name="age">
+        <input type="submit">
+    </form></div>
+{% endblock %}
+
+
+

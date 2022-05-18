@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block title %}books{% endblock %}
+{% block head %}{{ super() }}
+
+{% endblock %}
+{% block content %}
+'''
+add new book form
+search line by book name
+table of books with two options- all/availble
+on each line button 'loan' and 'remove' only if allowed
+'''
+<form action="/books/spesific" method="POST">
+    search book name: <input name="look_name">
+    <input type="submit">
+</form>
+<table>
+    <tr>
+        <th>actions</th>
+        <th>cat_number</th>
+        <th>book_name</th>
+        <th>author</th>
+        <th>book_type</th>
+        <th>book_status</th>
+    </tr>
+    {% for book in data %}
+    <tr>
+        <td> <a href="/loan/">Loan</a>
+            <a href="/books/remove/{{book['cat_number']}}">Remove</a>
+        </td>
+        <td>{{book['cat_number']}}</td>
+        <td>{{book['book_name']}}</td>
+        <td>{{book['author']}}</td>
+        <td>{{book['book_type']}}</td>
+        <td>{{book['book_status']}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<div>
+<form action="/books/add" method="POST">
+    book name: <input name="book_name">
+    author: <input name="author">
+    type: 
+    <input type="radio" name="book_type" value="1">
+    <label for="1">1</label>
+    <input type="radio" name="book_type" value="2">
+    <label for="2">2</label>
+    <input type="radio" name="book_type" value="3">
+    <label for="3">3</label>
+    <input type="submit">
+</form></div>
+{% endblock %}
