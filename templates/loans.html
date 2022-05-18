@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block title %}loans{% endblock %}
+{% block head %}{{ super() }}{% endblock %}
+{% block content %}
+'''
+table of loans with three options- all/open/ late 
+on each line button 'return' only if allowed
+'''<br>
+<div style="text-align: center;">
+<a href="/loans/late">late</a>
+<a href="/loans/all">all</a>
+</div>
+<table>
+    <tr>
+        <th>actions</th>
+        <th>id_number</th>
+        <th>cat_number</th>
+        <th>loan_date</th>
+        <th>date_to_return</th>
+        <th>loan_status</th>
+    </tr>
+    {% for loan in data %}
+    <tr>
+        <td> <a href="/loans/return/{{loan['cat_number']}}">return</a></td>
+        <td>{{loan['id_number']}}</td>
+        <td>{{loan['cat_number']}}</td>
+        <td>{{loan['loan_date']}}</td>
+        <td>{{loan['date_to_return']}}</td>
+        <td>{{loan['loan_status']}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
+
+

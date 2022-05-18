@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% block head %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>library - {% block title %}{% endblock %}</title>
+  {% endblock %}
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: rgb(216, 115, 32);
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: rgb(169, 90, 26);
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    td,
+    th {
+      border: 1px solid #000000;
+      text-align: center;
+      padding: 3px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
+
+</head>
+
+<body>
+ 
+  <ul>
+    <li><a class="active" href="/home">Home</a></li>
+    <li><a href="/books/all">books</a></li>
+    <li><a href="/customers/all">customers</a></li>
+    <li><a href="/loans/all">loans</a></li>
+  </ul>
+ 
+
+
+  <div id="content">{% block content %}
+    <h1 style="text-align: center;">welcome to daskal's library project</h1><br>
+    <h2 style="text-align: center;">please choose youre step from navbar</h2>
+
+    {% endblock %}
+  </div>
+</body>
+
+</html>
